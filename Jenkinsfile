@@ -8,12 +8,14 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/nurgldal/myapp.git'
-            }
-        }
-
+stage('Checkout') {
+  steps {
+    git branch: 'main',
+        credentialsId: '77dffc6a-815d-4c99-89fa-08383179ab10',
+        url: 'https://github.com/nurgldal/myapp.git'
+  }
+}
+        
         stage('Build Maven') {
             steps {
                 sh 'mvn clean package -DskipTests'
